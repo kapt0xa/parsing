@@ -72,4 +72,29 @@ def parse_all_chem_elemrnts_redox_voltages_from_MSU():
 
 def rework_parsed_chemical_elements_data():
     from chem_elements import chem_elements_indexes
-    links_file = open('./output/elements_redox_voltages.txt', 'w', encoding='utf-8')
+    source_input_file = open('./output/_elements_redox_voltages_29-10-2029.html', 'r', encoding='utf-8')
+
+    elements_enumeration_order = []
+    links_file = open('./output/_redox_links.txt', 'r', encoding='utf-8')
+    prefix = 'https://www.chem.msu.ru/rus/handbook/redox/elem_dat/'
+    suffix = '.html\n'
+    while(True):
+        line = links_file.readline()
+        if(len(line) < len(prefix)):
+            break
+        element_letters = line.removeprefix(prefix).removesuffix(suffix).capitalize()
+        element_index = chem_elements_indexes[element_letters]
+        elements_enumeration_order.append(element_index)
+    links_file.close()
+
+    articles = [None]*118
+    source_input_file = open('./output/_elements_redox_voltages_29-10-2029.html', 'r', encoding='utf-8')
+    input_html = BeautifulSoup(source_input_file.read(), 'html.parser')
+    source_input_file.close()
+    articles_html = input_html.find_all('center')
+
+    for article_html in articles_html:
+        h1_tags = article_html.find_all('h1')
+
+
+rework_parsed_chemical_elements_data()

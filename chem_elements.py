@@ -57,6 +57,8 @@ element_groups = \
 chem_elements_indexes = {k: i + 1 for i, el in enumerate(chem_elements) for k in (el, el.lower())}
 chem_elements_indexes['j'] = chem_elements_indexes['i']
 chem_elements_indexes['J'] = chem_elements_indexes['I']
+chem_elements_indexes['Ku'] = chem_elements_indexes['Rf'] # kurczatowij
+chem_elements_indexes['ku'] = chem_elements_indexes['rf']
 
 def build_link_map():
     table_template = \
