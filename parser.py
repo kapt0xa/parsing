@@ -70,4 +70,6 @@ def parse_all_chem_elemrnts_redox_voltages_from_MSU():
     all_elements_data.close()
 
 
-parse_all_chem_elemrnts_redox_voltages_from_MSU()
+def rework_parsed_chemical_elements_data():
+    from chem_elements import chem_elements_indexes
+    links_file = open('./output/elements_redox_voltages.txt', 'w', encoding='utf-8')
